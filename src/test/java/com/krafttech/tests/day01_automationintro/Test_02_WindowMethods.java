@@ -10,23 +10,28 @@ public class Test_02_WindowMethods {
     public static void main(String[] args) throws InterruptedException {
         WebDriverManager.chromedriver().setup();
 
-        WebDriver driver = new ChromeDriver();
+        WebDriver driver=new ChromeDriver();
         driver.get("https://www.krafttechnologie.com/");
-        driver.manage().window().maximize();
 
+
+        //ekranın ölçülerini alalım
         Dimension size = driver.manage().window().getSize();
         System.out.println("size = " + size);
 
-        //driverın pointini alma -->açılan driver penceresinin sol üst noktasını verir
+        //driver'ın pointini alma---> açılan driver penceresinin sol üst noktasını verir
+
         Point position = driver.manage().window().getPosition();
         System.out.println("position = " + position);
 
-        driver.manage().window().setPosition(new Point(+1000, 0));
+        driver.manage().window().setPosition(new Point(-1000,0));
         driver.manage().window().maximize();
-        Thread.sleep(3000);
 
+        Thread.sleep(2000);
+
+        //driverın boyutunu ayarlayalım
+
+        driver.manage().window().setSize(new Dimension(800,600));
 
         driver.close();
-
     }
 }
